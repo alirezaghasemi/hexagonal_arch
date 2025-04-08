@@ -1,6 +1,8 @@
 package server
 
 import (
+	"log"
+
 	"github.com/alirezaghasemi/hexagonal_arch/config"
 	"github.com/alirezaghasemi/hexagonal_arch/internal/container"
 	"github.com/alirezaghasemi/hexagonal_arch/internal/server"
@@ -8,10 +10,13 @@ import (
 )
 
 func StartServe() {
-	cfg := config.LoadConfig()
+	cfg, err := config.Load()
+	if err != nil {
+		log.Fatal(err)
+	}
 	c := container.NewContainer(cfg)
 	r := gin.Default()
 	server.RegisterRoutes(r, c.UserUC)
 
-	r.Run(cfg.ServerHost + ":" + cfg.ServerPort)
+	r.Run(cfg.Server.Host + ":" + cfg.Server.Port)
 }

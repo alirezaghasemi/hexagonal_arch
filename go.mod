@@ -3,9 +3,8 @@ module github.com/alirezaghasemi/hexagonal_arch
 go 1.23.4
 
 require (
-	github.com/caarlos0/env v3.5.0+incompatible
 	github.com/gin-gonic/gin v1.10.0
-	github.com/joho/godotenv v1.5.1
+	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/redis/go-redis/v9 v9.7.3
 	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12

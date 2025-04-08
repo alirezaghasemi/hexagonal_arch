@@ -10,15 +10,15 @@ import (
 )
 
 func InitPostgres(cfg *config.Config) *gorm.DB {
-	fmt.Println(cfg.DBHost)
-	fmt.Println(cfg.DBPort)
+	fmt.Println(cfg.Database.Host)
+	fmt.Println(cfg.Database.Port)
 	dsn := fmt.Sprintf(
 		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-		cfg.DBHost,
-		cfg.DBPort,
-		cfg.DBUsername,
-		cfg.DBPassword,
-		cfg.DBName,
+		cfg.Database.Host,
+		cfg.Database.Port,
+		cfg.Database.Username,
+		cfg.Database.Password,
+		cfg.Database.Name,
 	)
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
